@@ -4,8 +4,7 @@ This repository contains the OpenWrt source package for the Cascoda SDK.
 ## Installing the Cascoda SDK
 Installing the Cascoda SDK makes the package available in `make menuconfig`, which is the build system configuration interface. 
 
-First, ensure that you have CMake version 3.13 or newer, as this is necessary to build the Cascoda SDK. 
-This can be downloaded from the [CMake Website](https://cmake.org/download/).
+First, ensure that you have OpenWrt version 19.07.0 or later, otherwise you will have to manually update the cmake tool to make sure you have CMake version 3.13 or newer. This is necessary in order to build the Cascoda SDK.
 
 Add the Cascoda SDK package as a feed by adding the following line to the `feeds.conf` file:<br />
 `src-git cascoda_sdk https://github.com/Cascoda/cascoda-openwrt.git`.
