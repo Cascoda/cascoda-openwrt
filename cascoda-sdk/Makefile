@@ -56,9 +56,9 @@ define Package/cascoda-sdk/install
 	$(CP) $(PKG_BUILD_DIR)/bin/ot-cli-posix-mtd $(1)/usr/bin/ca-ot-cli-mtd
 	$(CP) $(PKG_BUILD_DIR)/bin/sniffer $(1)/usr/bin/ca-sniffer
 	$(CP) $(PKG_BUILD_DIR)/bin/ot-ncp-posix $(1)/usr/bin/ca-ot-ncp
-	$(CP) $(PKG_BUILD_DIR)/bin/ot-server-standalone $(1)/usr/bin/ca-ot-server-standalone
+	$(CP) $(PKG_BUILD_DIR)/bin/ot-sensordemo-server $(1)/usr/bin/ca-ot-sensordemo-server
 	$(CP) $(PKG_BUILD_DIR)/bin/serial-adapter $(1)/usr/bin/ca-serial-adapter
-	$(CP) $(PKG_BUILD_DIR)/bin/usb_test $(1)/usr/bin/ca-comm-check
+	$(CP) $(PKG_BUILD_DIR)/bin/serial-test $(1)/usr/bin/ca-serial-test
 endef
 
 $(eval $(call BuildPackage,cascoda-sdk))
