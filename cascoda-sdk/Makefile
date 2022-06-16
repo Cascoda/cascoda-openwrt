@@ -8,7 +8,7 @@ PKG_RELEASE:=1
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Cascoda/cascoda-sdk-priv.git
 PKG_SOURCE_DATE:=2022-06-16
-PKG_SOURCE_VERSION:=master
+PKG_SOURCE_VERSION:=nuc-980
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.gz
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_SOURCE_VERSION)
@@ -52,7 +52,8 @@ endef
 
 define Package/cascoda-sdk/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/bin/cliapp $(1)/usr/bin/ca-ot-cliapp
+	$(CP) $(PKG_BUILD_DIR)/bin/ot-cli-posix-ftd $(1)/usr/bin/ca-ot-cli-ftd
+	$(CP) $(PKG_BUILD_DIR)/bin/ot-cli-posix-mtd $(1)/usr/bin/ca-ot-cli-mtd
 	$(CP) $(PKG_BUILD_DIR)/bin/sniffer $(1)/usr/bin/ca-sniffer
 	$(CP) $(PKG_BUILD_DIR)/bin/ncpapp $(1)/usr/bin/ca-ot-ncpapp
 	$(CP) $(PKG_BUILD_DIR)/bin/ot-server-standalone $(1)/usr/bin/ca-ot-server-standalone
