@@ -58,6 +58,7 @@ define Package/cascoda-sdk/install
 	$(CP) $(PKG_BUILD_DIR)/bin/ot-ncp-posix $(1)/usr/bin/ca-ot-ncp
 	$(CP) $(PKG_BUILD_DIR)/bin/ot-sensordemo-server $(1)/usr/bin/ca-ot-sensordemo-server
 	$(CP) $(PKG_BUILD_DIR)/bin/serial-adapter $(1)/usr/bin/ca-serial-adapter
+	$(CP) $(PKG_BUILD_DIR)/bin/evbme-get $(1)/usr/bin/ca-evbme-get
 endef
 
 $(eval $(call BuildPackage,cascoda-sdk))
