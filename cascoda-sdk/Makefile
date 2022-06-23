@@ -6,9 +6,9 @@ PKG_NAME:=cascoda-sdk
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/Cascoda/cascoda-sdk-priv.git
-PKG_SOURCE_DATE:=2022-06-16
-PKG_SOURCE_VERSION:=e206ff164281b881ed25b88808976b71b5008bae
+PKG_SOURCE_URL:=https://github.com/Cascoda/cascoda-sdk.git
+PKG_SOURCE_DATE:=2022-06-23
+PKG_SOURCE_VERSION:=00cd19cfe14c6d5a38d60c057d746285f64e40ba
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.gz
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_SOURCE_VERSION)
@@ -27,7 +27,7 @@ include $(INCLUDE_DIR)/cmake.mk
 
 define Package/cascoda-sdk
   SECTION:=cascoda-sdk
-  DEPENDS:=+libpthread +libstdcpp
+  DEPENDS:=+libpthread +libstdcpp +hidapi +kmod-usb-hid
   CATEGORY:=Utilities
   TITLE:=Cascoda utilities
 endef
@@ -35,12 +35,13 @@ endef
 define Package/cascoda-sdk/description
   Cascoda Utilities: This package installs the following utilities
 
-	ca-ot-cliapp            - A command line interface to the Openthread stack.
+	ca-ot-cli-ftd           - A command line interface to the OpenThread stack, acting as a Full Thread Device
+	ca-ot-cli-mtd           - The OpenThread CLI, acting as a Minimal Thread Device
 	ca-sniffer              - An example program for sniffing 802.15.4 traffic on a specific channel.
-	ca-ot-ncpapp            - Network Co-Processor for interacting with openthread wpantund.
-	ca-ot-server-standalone - A server program able to connect to thread devices and interpret sensor data.
+	ca-ot-ncp               - Network Co-Processor for interacting with openthread wpantund.
+	ca-ot-sensordemo-server - A server program able to connect to thread devices and interpret sensor data.
 	ca-serial-adapter       - A useful program for interacting with a serial application running on baremetal.
-	ca-comm-check           - An application that tests the USB communications link for reliability and speed.
+	ca-evbme-get            - Prints information about connected Cascoda devices
 endef
 
 CMAKE_OPTIONS += -DBUILD_TESTING:Bool=OFF
