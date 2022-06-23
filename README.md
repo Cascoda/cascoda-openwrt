@@ -26,7 +26,7 @@ Exit and save configuration.
 After building and flashing the image to your device operating on OpenWrt, the following Cascoda applications will be available:
 <pre>	
 ca-ot-cli-ftd           - A command line interface to the OpenThread stack, acting as a Full Thread Device
-ca-ot-cli-mtd           - The OpenThread CLI, acting as a Minimal Thread Device
+ca-ot-cli-mtd           - A command line interface to the OpenThread stack, acting as a Minimal Thread Device
 ca-sniffer              - An example program for sniffing 802.15.4 traffic on a specific channel.
 ca-ot-ncp               - Network Co-Processor for interacting with openthread wpantund.
 ca-ot-sensordemo-server - A server program able to connect to thread devices and interpret sensor data.
