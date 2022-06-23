@@ -7,8 +7,8 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Cascoda/cascoda-sdk.git
-PKG_SOURCE_DATE:=2020-03-09
-PKG_SOURCE_VERSION:=71cf3464739e5ec8a1560d6c0f746e2be11745d5
+PKG_SOURCE_DATE:=2022-06-23
+PKG_SOURCE_VERSION:=00cd19cfe14c6d5a38d60c057d746285f64e40ba
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.gz
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_SOURCE_VERSION)
@@ -27,7 +27,7 @@ include $(INCLUDE_DIR)/cmake.mk
 
 define Package/cascoda-sdk
   SECTION:=cascoda-sdk
-  DEPENDS:=+libpthread +libstdcpp
+  DEPENDS:=+libpthread +libstdcpp +hidapi +kmod-usb-hid
   CATEGORY:=Utilities
   TITLE:=Cascoda utilities
 endef
@@ -35,12 +35,13 @@ endef
 define Package/cascoda-sdk/description
   Cascoda Utilities: This package installs the following utilities
 
-	ca-ot-cliapp            - A command line interface to the Openthread stack.
+	ca-ot-cli-ftd           - A command line interface to the OpenThread stack, acting as a Full Thread Device
+	ca-ot-cli-mtd           - A command line interface to the OpenThread stack, acting as a Minimal Thread Device
 	ca-sniffer              - An example program for sniffing 802.15.4 traffic on a specific channel.
-	ca-ot-ncpapp            - Network Co-Processor for interacting with openthread wpantund.
-	ca-ot-server-standalone - A server program able to connect to thread devices and interpret sensor data.
+	ca-ot-ncp               - Network Co-Processor for interacting with openthread wpantund.
+	ca-ot-sensordemo-server - A server program able to connect to thread devices and interpret sensor data.
 	ca-serial-adapter       - A useful program for interacting with a serial application running on baremetal.
-	ca-comm-check           - An application that tests the USB communications link for reliability and speed.
+	ca-evbme-get            - Prints information about connected Cascoda devices
 endef
 
 CMAKE_OPTIONS += -DBUILD_TESTING:Bool=OFF
@@ -52,12 +53,13 @@ endef
 
 define Package/cascoda-sdk/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(CP) $(PKG_BUILD_DIR)/bin/cliapp $(1)/usr/bin/ca-ot-cliapp
+	$(CP) $(PKG_BUILD_DIR)/bin/ot-cli-posix-ftd $(1)/usr/bin/ca-ot-cli-ftd
+	$(CP) $(PKG_BUILD_DIR)/bin/ot-cli-posix-mtd $(1)/usr/bin/ca-ot-cli-mtd
 	$(CP) $(PKG_BUILD_DIR)/bin/sniffer $(1)/usr/bin/ca-sniffer
-	$(CP) $(PKG_BUILD_DIR)/bin/ncpapp $(1)/usr/bin/ca-ot-ncpapp
-	$(CP) $(PKG_BUILD_DIR)/bin/ot-server-standalone $(1)/usr/bin/ca-ot-server-standalone
+	$(CP) $(PKG_BUILD_DIR)/bin/ot-ncp-posix $(1)/usr/bin/ca-ot-ncp
+	$(CP) $(PKG_BUILD_DIR)/bin/ot-sensordemo-server $(1)/usr/bin/ca-ot-sensordemo-server
 	$(CP) $(PKG_BUILD_DIR)/bin/serial-adapter $(1)/usr/bin/ca-serial-adapter
-	$(CP) $(PKG_BUILD_DIR)/bin/usb_test $(1)/usr/bin/ca-comm-check
+	$(CP) $(PKG_BUILD_DIR)/bin/evbme-get $(1)/usr/bin/ca-evbme-get
 endef
 
 $(eval $(call BuildPackage,cascoda-sdk))

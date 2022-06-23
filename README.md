@@ -21,24 +21,15 @@ Include the `cascoda-sdk` package:
 2. Hover over `cascoda-sdk`
 3. Press the `y` key to include the package
 
-Include the `hidapi` package (this is necessary for the Chili module to be recognised as a USB HID device):
-1. Go to `Libraries`
-2. Hover over `hidapi`
-3. Press the `y` key to include the package
-
-Include the `kmod-usb-hid` package (for the same reason as above):
-1. Go to `Kernel modules ---> USB Support`
-2. Hover over `kmod-usb-hid`
-3. Press the `y` key to include the package
-
 Exit and save configuration.
 
 After building and flashing the image to your device operating on OpenWrt, the following Cascoda applications will be available:
 <pre>	
-ca-ot-cliapp            - A command line interface to the Openthread stack.
+ca-ot-cli-ftd           - A command line interface to the OpenThread stack, acting as a Full Thread Device
+ca-ot-cli-mtd           - A command line interface to the OpenThread stack, acting as a Minimal Thread Device
 ca-sniffer              - An example program for sniffing 802.15.4 traffic on a specific channel.
-ca-ot-ncpapp            - Network Co-Processor for interacting with openthread wpantund.
-ca-ot-server-standalone - A server program able to connect to thread devices and interpret sensor data.
+ca-ot-ncp               - Network Co-Processor for interacting with openthread wpantund.
+ca-ot-sensordemo-server - A server program able to connect to thread devices and interpret sensor data.
 ca-serial-adapter       - A useful program for interacting with a serial application running on baremetal.
-ca-comm-check           - An application that tests the USB communications link for reliability and speed.
+ca-evbme-get            - Prints information about connected Cascoda devices
 </pre>
